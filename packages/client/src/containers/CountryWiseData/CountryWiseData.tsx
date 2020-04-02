@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect, useMemo, ReactElement } from 'react'
 
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
@@ -10,9 +10,7 @@ import chartOptions from './chart-options'
 
 import * as css from './CountryWiseData.css'
 
-interface CountryWiseProps {}
-
-function CountryWiseData(props: CountryWiseProps) {
+function CountryWiseData(): ReactElement {
   const { data, error, fetching, fetchData } = usePromise({
     service: CountryService.getCountryWiseList,
     payload: {

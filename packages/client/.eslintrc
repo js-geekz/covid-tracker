@@ -1,11 +1,43 @@
 {
-  "extends": [
-    "plugin:prettier/recommended"
-  ],
-
-  "plugins": ["prettier"],
-
+  "parserOptions": {
+    "ecmaVersion": 2019,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended", "eslint-config-prettier"],
   "rules": {
-    "prettier/prettier": "error"
-  }
+    "strict": ["error", "never"],
+    "react/no-unescaped-entities": "off"
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "overrides": [
+    {
+      "files": "**/*.+(ts|tsx)",
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "project": "./tsconfig.json"
+      },
+      "plugins": ["@typescript-eslint/eslint-plugin"],
+      "extends": [
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "eslint-config-prettier/@typescript-eslint"
+      ],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/interface-name-prefix": "off",
+        "@typescript-eslint/class-name-casing": "off"
+      }
+    }
+  ]
 }
