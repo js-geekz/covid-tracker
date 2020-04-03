@@ -6,12 +6,19 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "cd packages/client && yarn client",
+    "lint-client": "cd packages/client && yarn lint-staged",
     "install-client-deps": "cd packages/client && yarn install",
     "server": "cd packages/server && yarn server",
+    "lint-server": "cd packages/server && yarn lint",
     "install-server-deps": "cd packages/server && yarn install",
+    "lint-all-packages": "yarn lint-client && yarn lint-server",
     "start": "npm-run-all --parallel client server",
-    "install": "npm-run-all --parallel install-client-deps install-server-deps",
-    "build": "webpack --mode production"
+    "install": "npm-run-all --parallel install-client-deps install-server-deps"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint-all-packages"
+    }
   },
   "repository": {
     "type": "git",
@@ -32,6 +39,7 @@
   },
   "homepage": "https://github.com/js-geekz/covid-tracker#readme",
   "devDependencies": {
+    "husky": "^4.2.3",
     "lerna": "^3.20.2",
     "npm-run-all": "^4.1.5"
   }
