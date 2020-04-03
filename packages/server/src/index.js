@@ -1,9 +1,8 @@
 const express = require('express')
-const { NovelCovid } = require('novelcovid')
-var cors = require('cors')
+const cors = require('cors')
+const routes = require('./routes/index')
 
 let app = express()
-const covid = new NovelCovid()
 
 var corsOptions = {
   origin: 'http://localhost:3000',
@@ -14,16 +13,6 @@ app.use(cors(corsOptions))
 
 app.use(express.static('dist'))
 
-app.get('/get-all', async (req, res) => {
-  let countryWiseData = await covid.countries()
-
-  const query = req.query
-
-  if (query.limit) {
-    countryWiseData = countryWiseData.slice(0, +query.limit)
-  }
-
-  res.json(countryWiseData)
-})
+app.use('/', routes)
 
 app.listen(8000, () => console.log('Example app listening on port 8000!'))
