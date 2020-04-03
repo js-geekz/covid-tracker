@@ -8,7 +8,7 @@
   "private": false,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "echo \"No lint configuration for server\"",
+    "lint": "eslint --ignore-path ../../.gitignore --ext .js .",
     "server": "nodemon ./server"
   },
   "dependencies": {
@@ -16,5 +16,12 @@
     "express": "^4.17.1",
     "nodemon": "^2.0.2",
     "novelcovid": "^1.1.2"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "lint-staged": "^10.1.1",
+    "prettier": "^2.0.2"
   }
 }

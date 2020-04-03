@@ -9,7 +9,7 @@
     "lint-client": "cd packages/client && yarn lint-staged",
     "install-client-deps": "cd packages/client && yarn install",
     "server": "cd packages/server && yarn server",
-    "lint-server": "cd packages/server && yarn lint",
+    "lint-server": "cd packages/server && yarn lint-staged",
     "install-server-deps": "cd packages/server && yarn install",
     "lint-all-packages": "yarn lint-client && yarn lint-server",
     "start": "npm-run-all --parallel client server",
