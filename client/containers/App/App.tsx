@@ -8,7 +8,7 @@ function App() {
   return (
     <div className={css.container}>
       <CountryWiseData />
-      <div> Show Same Stats with details here (Total, deaths, new as compared to yesterda)</div>
+      <div id="container"> Show Same Stats with details here (Total, deaths, new as compared to yesterday)</div>
       <div className={css.dataGrid}> Show a big data grid with all the countries</div>
     </div>
   )
