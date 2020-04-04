@@ -1,6 +1,7 @@
 const path = require('path')
 const fs = require('fs')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const appDirectory = fs.realpathSync(process.cwd())
@@ -80,6 +81,7 @@ module.exports = {
     }
   },
   plugins: [
+    new CopyPlugin([{ from: 'assets' }]),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name]-styles.[hash].css'
@@ -90,7 +92,7 @@ module.exports = {
     })
   ],
   devServer: {
-    contentBase: resolveAppPath('src'),
+    contentBase: [resolveAppPath('src'), resolveAppPath('assets')],
     compress: true,
     hot: true,
     host,
