@@ -1,6 +1,6 @@
 # covid-tracker
 
-Workshop for learning building UI with react, typescript and API's with nodejs, express.
+Workshop project for learning building UI with react, typescript and API's with nodejs, express.
 
 ## Install Dependencies
 ```
