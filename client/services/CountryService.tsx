@@ -1,7 +1,7 @@
 import { agent } from '../utils/agent'
 
-export async function getCountryWiseList(params: Record<string, string>): Promise<object> {
-  return new Promise(resolve => {
+export async function getCountryWiseList(params: Record<string, string>) {
+  return new Promise((resolve, reject) => {
     const url = new URLSearchParams('')
 
     if (params?.limit) {

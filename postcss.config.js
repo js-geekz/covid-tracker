@@ -5,5 +5,5 @@ const postCssSimpleVars = require('postcss-simple-vars')
 const postCssAutoprefixer = require('autoprefixer')
 
 module.exports = {
-  plugins: [postCssImport, postMixins, postCssNested, postCssSimpleVars, postCssAutoprefixer]
+    plugins: [postCssImport, postMixins, postCssNested, postCssSimpleVars, postCssAutoprefixer]
 }

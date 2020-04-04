@@ -22,7 +22,7 @@ export default function usePromise<T>({ service, payload }: props<T>): PromiseRe
     error: undefined
   })
 
-  async function fetchData(): Promise<void> {
+  async function fetchData() {
     setState({
       data: null,
       error: null,

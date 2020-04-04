@@ -1,4 +1,4 @@
-export default function (data: Array<string | number>[]): object {
+export default function (data: Array<string | number>[]) {
   return {
     chart: {
       type: 'bar',
