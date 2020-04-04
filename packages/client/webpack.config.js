@@ -1,6 +1,7 @@
 const path = require('path')
 const fs = require('fs')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const appDirectory = fs.realpathSync(process.cwd())
@@ -15,7 +16,7 @@ const fileNamePattern = '[name].[hash]'
 module.exports = {
   mode: 'development',
   entry: {
-    client: './client/index.tsx'
+    client: './src/index.tsx'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -26,10 +27,6 @@ module.exports = {
   devtool: 'cheap-module-source-map',
   resolve: {
     extensions: ['.ts', '.tsx', '.js']
-  },
-  output: {
-    path: path.resolve(__dirname, './dist'),
-    filename: '[name].[hash].js'
   },
   module: {
     rules: [
@@ -84,17 +81,18 @@ module.exports = {
     }
   },
   plugins: [
+    new CopyPlugin([{ from: 'assets' }]),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name]-styles.[hash].css'
     }),
     new HtmlWebpackPlugin({
       inject: true,
-      template: resolveAppPath('client/index.html')
+      template: resolveAppPath('src/index.html')
     })
   ],
   devServer: {
-    contentBase: resolveAppPath('client'),
+    contentBase: [resolveAppPath('src'), resolveAppPath('assets')],
     compress: true,
     hot: true,
     host,

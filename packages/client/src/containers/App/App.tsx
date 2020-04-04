@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
 import CountryWiseData from '../CountryWiseData'
 
 import * as css from './App.css'
 
-function App() {
+function App(): ReactElement {
   return (
     <div className={css.container}>
       <CountryWiseData />
